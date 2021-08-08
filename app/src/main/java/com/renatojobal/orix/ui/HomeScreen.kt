@@ -21,7 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.renatojobal.orix.R
-import com.renatojobal.orix.Room
+import com.renatojobal.orix.CardItemModel
 import com.renatojobal.orix.ui.theme.*
 
 
@@ -44,38 +44,38 @@ fun HomeScreen(
 
             // Rooms
             RoomsSection(
-                rooms = listOf(
-                    Room(
+                cardItemModels = listOf(
+                    CardItemModel(
                         emoji = "\uD83D\uDECB",
                         title = "Living Room",
                         devices = 5,
                         color = PieOrange
                     ),
-                    Room(
+                    CardItemModel(
                         emoji = "\uD83C\uDF73",
                         title = "Kitchen",
                         devices = 4,
                         color = PieYellow
                     ),
-                    Room(
+                    CardItemModel(
                         emoji = "\uD83D\uDDA8",
                         title = "Office",
                         devices = 10,
                         color = PiePurple
                     ),
-                    Room(
+                    CardItemModel(
                         emoji = "\uD83D\uDECC",
                         title = "Bedroom",
                         devices = 6,
                         color = PieBlue
                     ),
-                    Room(
+                    CardItemModel(
                         emoji = "\uD83D\uDEC0",
                         title = "Bathroom",
                         devices = 7,
                         color = PieRed
                     ),
-                    Room(
+                    CardItemModel(
                         emoji = "\uD83C\uDF7D",
                         title = "Dining Room",
                         devices = 4,
@@ -152,7 +152,7 @@ fun GreetingSection(name: String) {
 @ExperimentalFoundationApi
 @Composable
 fun RoomsSection(
-    rooms: List<Room>
+    cardItemModels: List<CardItemModel>
 
 ) {
     Column {
@@ -210,58 +210,19 @@ fun RoomsSection(
             contentPadding = PaddingValues(start = 7.5.dp, end = 7.5.dp, bottom = 20.dp),
             modifier = Modifier.fillMaxHeight()
         ) {
-            items(rooms.size) {
-                RoomItem(room = rooms[it])
-            }
-        }
-
-    }
-}
-
-@Composable
-fun RoomItem(
-    room: Room
-) {
-    BoxWithConstraints(
-        contentAlignment = Alignment.Center,
-        modifier = Modifier
-            .padding(10.dp)
-            .aspectRatio(1f)
-            .clip(RoundedCornerShape(30.dp))
-            .background(room.color)
-
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally
-        )
-        {
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier
-                    .padding(top = 20.dp, bottom = 15.dp)
-                    .clip(RoundedCornerShape(50))
-                    .background(
-                        White
-                    )
-                    .padding(15.dp)
-            ) {
-                Text(
-                    text = room.emoji,
-                    style = MaterialTheme.typography.h5
+            items(cardItemModels.size) {
+                CardItem(
+                    color = cardItemModels[it].color,
+                    emoji = cardItemModels[it].emoji,
+                    title = cardItemModels[it].title,
+                    subtitle = "${cardItemModels[it].devices} devices"
                 )
             }
-            Text(
-                text = room.title,
-                style = MaterialTheme.typography.h6,
-                fontWeight = FontWeight.Bold
-            )
-            Text(
-                text = "${room.devices} devices",
-                style = MaterialTheme.typography.subtitle1
-            )
         }
+
     }
 }
+
 
 @ExperimentalFoundationApi
 @Preview("Default preview")
