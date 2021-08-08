@@ -2,6 +2,7 @@ package com.renatojobal.orix.ui
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -27,8 +28,7 @@ import com.renatojobal.orix.ui.theme.*
 
 @ExperimentalFoundationApi
 @Composable
-fun HomeScreen(
-) {
+fun HomeScreen(onSelectedRoom: () -> Unit) {
     Box(
         modifier = Modifier
             .background(White)
@@ -82,7 +82,8 @@ fun HomeScreen(
                         color = PieGreen
                     )
 
-                )
+                ),
+                onSelectedRoom = onSelectedRoom
 
             )
 
@@ -139,7 +140,7 @@ fun GreetingSection(name: String) {
                 fontWeight = FontWeight.Bold
             )
             Text(
-                text = "Wellcome to Orix Home.",
+                text = "Welcome to Orix Home.",
                 style = MaterialTheme.typography.subtitle1,
                 modifier = Modifier.padding(0.dp, 10.dp)
             )
@@ -152,7 +153,8 @@ fun GreetingSection(name: String) {
 @ExperimentalFoundationApi
 @Composable
 fun RoomsSection(
-    cardItemModels: List<CardItemModel>
+    cardItemModels: List<CardItemModel>,
+    onSelectedRoom: () -> Unit
 
 ) {
     Column {
@@ -211,12 +213,20 @@ fun RoomsSection(
             modifier = Modifier.fillMaxHeight()
         ) {
             items(cardItemModels.size) {
-                CardItem(
-                    color = cardItemModels[it].color,
-                    emoji = cardItemModels[it].emoji,
-                    title = cardItemModels[it].title,
-                    subtitle = "${cardItemModels[it].devices} devices"
-                )
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .clickable(onClick = onSelectedRoom)
+                ) {
+                    CardItem(
+                        color = cardItemModels[it].color,
+                        emoji = cardItemModels[it].emoji,
+                        title = cardItemModels[it].title,
+                        subtitle = "${cardItemModels[it].devices} devices"
+                    )
+
+                }
+
             }
         }
 
@@ -225,11 +235,13 @@ fun RoomsSection(
 
 
 @ExperimentalFoundationApi
-@Preview("Default preview")
+@Preview("Default home preview")
 @Composable
 fun DefaultPreview() {
     OrixTheme {
-        HomeScreen()
+        HomeScreen {
+            val navController = null
+        }
     }
 }
 

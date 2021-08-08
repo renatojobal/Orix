@@ -4,13 +4,17 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.core.provider.FontRequest
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 import com.renatojobal.orix.ui.HomeScreen
+import com.renatojobal.orix.ui.RoomDetailScreen
 import com.renatojobal.orix.ui.theme.OrixTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,23 +23,45 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            OrixTheme {
-                HomeScreen()
-            }
+            OrixApp()
         }
     }
 }
 
 @ExperimentalFoundationApi
-@Preview("Default preview")
 @Composable
-fun DefaultPreview() {
+fun OrixApp() {
     OrixTheme {
-        HomeScreen()
+
+        val navController = rememberNavController()
+        val backStackEntry = navController.currentBackStackEntryAsState()
+
+        OrixNavHost(
+            navController
+        )
+
+
     }
 }
 
+@ExperimentalFoundationApi
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+fun OrixNavHost(navController: NavHostController) {
+    NavHost(
+        navController = navController,
+        modifier = Modifier.fillMaxHeight(),
+        startDestination = "home"
+    ) {
+        composable(route="home"){
+            HomeScreen { navController.navigate("room-detail") }
+        }
+        composable(route = "room-detail"){
+            RoomDetailScreen()
+        }
+
+    }
 }
+
+
+
+
