@@ -7,10 +7,12 @@ Got from [Dribbble](https://dribbble.com/shots/14990978-Smart-Home-App/attachmen
 All the credit for the UI design to [Sajon](https://dribbble.com/sajon)
 
 ## Result
-![image](https://user-images.githubusercontent.com/35740463/128732887-a0e1191b-e17d-4e98-96bc-a97b49b58739.png)
-![image](https://user-images.githubusercontent.com/35740463/128732935-5b78c4c1-bce2-4103-a003-9f50b263ac34.png)
+<img src="https://user-images.githubusercontent.com/35740463/128732887-a0e1191b-e17d-4e98-96bc-a97b49b58739.png" alt="home screen" width="200"/>
+<img src="https://user-images.githubusercontent.com/35740463/128732935-5b78c4c1-bce2-4103-a003-9f50b263ac34.png" alt="detail screen" width="200"/>
 
-![recordOrix](https://user-images.githubusercontent.com/35740463/128735949-4d397d0e-656f-4d86-a9a8-2229a6039cad.gif)
+
+<img src="https://user-images.githubusercontent.com/35740463/128735949-4d397d0e-656f-4d86-a9a8-2229a6039cad.gif" alt="gif of the app runnning" width="200"/>
+
 
 
 ## Learned topics
