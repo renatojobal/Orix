@@ -7,7 +7,6 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -56,7 +55,7 @@ fun OrixNavHost(navController: NavHostController) {
             HomeScreen { navController.navigate("room-detail") }
         }
         composable(route = "room-detail"){
-            RoomDetailScreen()
+            RoomDetailScreen { navController.navigate("home") }
         }
 
     }

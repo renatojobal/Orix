@@ -32,9 +32,10 @@ fun CardItem(
         contentAlignment = Alignment.Center,
         modifier = Modifier
             .padding(10.dp)
-            .aspectRatio(1f)
+            .fillMaxWidth()
             .clip(RoundedCornerShape(30.dp))
             .background(color)
+            .padding(bottom = 8.dp)
 
     ) {
         Column(
