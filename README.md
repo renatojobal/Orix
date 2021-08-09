@@ -8,11 +8,10 @@ All the credit for the UI design to [Sajon](https://dribbble.com/sajon)
 
 ## Result
 ![image](https://user-images.githubusercontent.com/35740463/128732887-a0e1191b-e17d-4e98-96bc-a97b49b58739.png)
-
-
-
-
 ![image](https://user-images.githubusercontent.com/35740463/128732935-5b78c4c1-bce2-4103-a003-9f50b263ac34.png)
+
+![recordOrix](https://user-images.githubusercontent.com/35740463/128735949-4d397d0e-656f-4d86-a9a8-2229a6039cad.gif)
+
 
 ## Learned topics
 I have learned a lot from working with Jetpack Compose:
